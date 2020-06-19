@@ -27,6 +27,8 @@ public class Produto implements Serializable {
 	private Integer qtde;
 
 	private Date validade;
+	
+	private boolean ativos;
 
 	public Integer getId() {
 		return id;
@@ -58,6 +60,14 @@ public class Produto implements Serializable {
 
 	public void setValidade(Date validade) {
 		this.validade = validade;
+	}
+
+	public boolean isAtivos() {
+		return ativos;
+	}
+
+	public void setAtivos(boolean ativos) {
+		this.ativos = ativos;
 	}
 
 }
