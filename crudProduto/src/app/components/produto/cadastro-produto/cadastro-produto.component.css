@@ -1,11 +1,5 @@
-.center {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .body {
-  margin: 10px;
+  margin: 40px;
 }
 
 mat-form-field {
@@ -22,4 +16,8 @@ button {
 .button_align {
   margin-top: 20px;
   margin-left: 320px;
+}
+
+.title {
+  font-weight: bold;
 }

@@ -1,5 +1,5 @@
 <div class="body">
-  <div class="mat-headline center">Cadastro de Produtos</div>
+  <div class="mat-headline title">Cadastro de Produtos</div>
   <form [formGroup]="cadastroForm" (submit)="salvarProduto()">
     <div class="row">
       <mat-form-field floatLabel="auto" hideRequiredMarker appearance="outline">
@@ -11,8 +11,9 @@
         <input matInput formControlName="qtde">
       </mat-form-field>
       <mat-form-field appearance="outline">
+        <mat-label>Validade</mat-label>
         <input matInput [matDatepicker]="myDatePicker" readonly placeholder="Selecione uma data"
-          formControlName="validade">
+          formControlName="validade" matTooltip="Selecione uma data no ícone">
         <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
         <mat-datepicker #myDatePicker></mat-datepicker>
       </mat-form-field>
@@ -20,8 +21,7 @@
     <div class="row button_align">
       <button mat-raised-button color="primary">Salvar</button>
       <button mat-raised-button type="button" (click)="limpar()">Limpar</button>
-      <button mat-raised-button [routerLink]="['/']">Voltar</button>
+      <button mat-raised-button [routerLink]="['/produtos']">Voltar</button>
     </div>
   </form>
-  <!-- <button mat-button (click)="openCustomSnackBar('')">ZESSERAW</button> -->
 </div>
