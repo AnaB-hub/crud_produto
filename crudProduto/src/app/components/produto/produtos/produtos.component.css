@@ -1,0 +1,15 @@
+.table {
+  margin: 40px;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+.body {
+  margin: 40px;
+}
+
+.title {
+  font-weight: bold;
+}

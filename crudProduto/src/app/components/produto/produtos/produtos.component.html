@@ -1,0 +1,28 @@
+<div class="body">
+  <div class="mat-headline title">Listagem de Produtos</div>
+</div>
+<div class="mat-elevation-z8 table">
+  <mat-table [dataSource]="dados" matSort>
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.nome || '-'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="qtde">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Qtde. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.qtde || '-'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="validade">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Validade </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.validade | date }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="acoes">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Ações </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon color="primary" title="Editar" (click)="alterar(element.id)">create</mat-icon> &nbsp;
+        <mat-icon color="primary" title="Excluir" (click)="excluir(element.id)">clear</mat-icon>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
