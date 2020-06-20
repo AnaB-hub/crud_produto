@@ -9,8 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "produto")
+@Getter
+@Setter
 public class Produto implements Serializable {
 
 	/**
@@ -29,45 +34,5 @@ public class Produto implements Serializable {
 	private Date validade;
 	
 	private boolean ativos;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public Integer getQtde() {
-		return qtde;
-	}
-
-	public void setQtde(Integer qtde) {
-		this.qtde = qtde;
-	}
-
-	public Date getValidade() {
-		return validade;
-	}
-
-	public void setValidade(Date validade) {
-		this.validade = validade;
-	}
-
-	public boolean isAtivos() {
-		return ativos;
-	}
-
-	public void setAtivos(boolean ativos) {
-		this.ativos = ativos;
-	}
 
 }
