@@ -1,10 +1,12 @@
 <div>
   <mat-toolbar color="primary" class="navbar">
-    <div class="menu" [routerLink]="['/']">CRUD de Produtos</div>
+    <div class="menu" [routerLink]="['/']">CRUD de Produtos
+      <mat-icon class="icon">favorite</mat-icon>
+    </div>
     <div class="menu">
       <span [routerLink]="['/']">Página Inicial</span>
       <span [routerLink]="['/cadastro-produto']">Cadastro de produto</span>
-      <span>Listagem de Produtos</span>
+      <span [routerLink]="['/produtos']">Listagem de Produtos</span>
     </div>
   </mat-toolbar>
 </div>

@@ -9,3 +9,8 @@ span {
 .menu {
   cursor: pointer;
 }
+
+.icon {
+  color: aliceblue;
+  padding-top: 3px;
+}
