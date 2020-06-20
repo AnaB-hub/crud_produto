@@ -57,7 +57,7 @@ export class CadastroProdutoComponent implements OnInit {
   salvarProduto(): void {
     if (this.cadastroForm.valid) {
       if (this.id) {
-        this.produtoService.alterar(this.cadastroForm.value).subscribe((a) => {
+        this.produtoService.alterar(this.cadastroForm.value, this.id).subscribe((a) => {
           this.openCustomSnackBar("Produto alterado com sucesso!", "X");
           setTimeout(() => {
             this.router.navigate(["/produtos"]);

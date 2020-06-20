@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "./../../../environments/environment";
+import { Produto } from "./model/produto";
 
 const url = `${environment.apiBaseUrl}/produtos`;
 
@@ -10,7 +11,7 @@ const url = `${environment.apiBaseUrl}/produtos`;
 export class ProdutoService {
   constructor(private http: HttpClient) {}
 
-  salvar(formulario) {
+  salvar(formulario: Produto) {
     return this.http.post(url, formulario);
   }
 
@@ -18,15 +19,15 @@ export class ProdutoService {
     return this.http.get(`${url}/ativos`);
   }
 
-  findById(id) {
+  findById(id: number) {
     return this.http.get(`${url}/${id}`);
   }
 
-  alterar(formulario) {
-    return this.http.put(`${url}`, formulario);
+  alterar(formulario: Produto, id: number) {
+    return this.http.put(`${url}/${id}`, formulario);
   }
 
-  excluir(id) {
+  excluir(id: number) {
     return this.http.get(`${url}/delete/${id}`);
   }
 }

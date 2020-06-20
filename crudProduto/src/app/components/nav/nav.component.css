@@ -10,6 +10,10 @@ span {
   cursor: pointer;
 }
 
+/* .menu:focus {
+  outline: 0;
+} */
+
 .icon {
   color: aliceblue;
   padding-top: 3px;

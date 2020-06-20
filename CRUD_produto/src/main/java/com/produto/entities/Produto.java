@@ -18,6 +18,17 @@ import lombok.Setter;
 @Setter
 public class Produto implements Serializable {
 
+	public Produto(Integer id, String nome, Integer qtde, Date validade) {
+		this.id = id;
+		this.nome = nome;
+		this.qtde = qtde;
+		this.validade = validade;
+	}
+
+	public Produto() {
+		super();
+	}
+
 	/**
 	 * 
 	 */
@@ -32,7 +43,7 @@ public class Produto implements Serializable {
 	private Integer qtde;
 
 	private Date validade;
-	
+
 	private boolean ativos;
 
 }

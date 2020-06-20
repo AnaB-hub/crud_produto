@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.produto.entities.Produto;
+import com.produto.entities.dto.ProdutoDTO;
+import com.produto.entities.mapper.ProdutoMapper;
 import com.produto.repository.ProdutoRepository;
 
 import io.swagger.annotations.Api;
@@ -28,15 +30,18 @@ public class ProdutoController {
 	@Autowired
 	ProdutoRepository produtoRepository;
 	
+	@Autowired
+	private ProdutoMapper mapper;
+	
 	@GetMapping
 	@ApiOperation(value="Lista de todos os produtos")
-	private List<Produto> produtos() {
+	public List<Produto> produtos() {
 		return produtoRepository.findAll();
 	}
 	
 	@GetMapping("/ativos")
 	@ApiOperation(value="Lista de todos os produtos ativos")
-	private Stream<Produto> produtosAtivos() {
+	public Stream<Produto> produtosAtivos() {
 		List<Produto> produtos = produtoRepository.findAll();
 		return produtos.stream().filter(p -> p.isAtivos() == true);
 	}
@@ -49,20 +54,22 @@ public class ProdutoController {
 	
 	@PostMapping
 	@ApiOperation(value="Salva produto")
-	private Produto saveProduto(@RequestBody Produto produto) {
-		produto.setAtivos(true);
-		return produtoRepository.save(produto);
+	public Produto saveProduto(@RequestBody ProdutoDTO dto) {
+		Produto prod = mapper.setProdutoDTOTOProduto(dto);
+		prod.setAtivos(true);
+		return produtoRepository.save(prod);
 	}
 	
-	@PutMapping()
-	@ApiOperation(value="Altera produto")
-	private Produto updateProduto(@RequestBody Produto produto) {
+	@PutMapping("/{id}")
+	@ApiOperation(value="Altera produto usando ID")
+	public Produto updateProduto(@RequestBody Produto produto, @PathVariable(value="id") int id) {
+		produto.setId(id);
 		return produtoRepository.save(produto);
 	}
 	
 	@GetMapping("/delete/{id}")
 	@ApiOperation(value="Exclusão lógica de produto")
-	private void logicalExclusionProduto(@PathVariable(value="id") int id) {
+	public void logicalExclusionProduto(@PathVariable(value="id") int id) {
 		Produto produto = produtoRepository.findById(id);
 		produto.setAtivos(false);
 		produtoRepository.save(produto);
