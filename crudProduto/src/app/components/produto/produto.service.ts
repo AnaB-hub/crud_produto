@@ -15,6 +15,18 @@ export class ProdutoService {
   }
 
   consultar() {
-    return this.http.get(url);
+    return this.http.get(`${url}/ativos`);
+  }
+
+  findById(id) {
+    return this.http.get(`${url}/${id}`);
+  }
+
+  alterar(formulario) {
+    return this.http.put(`${url}`, formulario);
+  }
+
+  excluir(id) {
+    return this.http.get(`${url}/delete/${id}`);
   }
 }
