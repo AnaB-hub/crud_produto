@@ -13,3 +13,8 @@ mat-icon {
 .title {
   font-weight: bold;
 }
+
+mat-header-cell {
+  font-size: 18px;
+  font-weight: bold;
+}
