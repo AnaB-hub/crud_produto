@@ -13,7 +13,7 @@
     </ng-container>
     <ng-container matColumnDef="validade">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Validade </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.validade | date }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.validade | date:'dd/MM/yyyy' }} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="acoes">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Ações </mat-header-cell>

@@ -15,7 +15,8 @@ button {
 
 .button_align {
   margin-top: 20px;
-  margin-left: 320px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .title {

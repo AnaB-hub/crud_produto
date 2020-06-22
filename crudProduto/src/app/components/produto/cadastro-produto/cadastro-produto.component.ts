@@ -35,7 +35,7 @@ export class CadastroProdutoComponent implements OnInit {
     this.cadastroForm = this.formBuilder.group({
       id: [null],
       nome: [null, Validators.required],
-      qtde: [null],
+      qtde: [null, Validators.required],
       validade: [null, Validators.required],
       ativos: [true],
     });
@@ -56,13 +56,22 @@ export class CadastroProdutoComponent implements OnInit {
 
   salvarProduto(): void {
     if (this.cadastroForm.valid) {
+      if (!this.qtdeValida()) {
+        this.openCustomSnackBar(
+          "Qtde inválida! Informe um número inteiro e positivo.",
+          "X"
+        );
+        return;
+      }
       if (this.id) {
-        this.produtoService.alterar(this.cadastroForm.value, this.id).subscribe((a) => {
-          this.openCustomSnackBar("Produto alterado com sucesso!", "X");
-          setTimeout(() => {
-            this.router.navigate(["/produtos"]);
-          }, 2000);
-        });
+        this.produtoService
+          .alterar(this.cadastroForm.value, this.id)
+          .subscribe((a) => {
+            this.openCustomSnackBar("Produto alterado com sucesso!", "X");
+            setTimeout(() => {
+              this.router.navigate(["/produtos"]);
+            }, 2000);
+          });
       } else {
         this.produtoService.salvar(this.cadastroForm.value).subscribe((a) => {
           this.openCustomSnackBar("Produto cadastrado com sucesso!", "X");
@@ -72,8 +81,25 @@ export class CadastroProdutoComponent implements OnInit {
         });
       }
     } else {
-      this.openCustomSnackBar("Preencha os dados obrigatórios", "X");
+      this.openCustomSnackBar(
+        "Preencha os dados obrigatórios corretamente",
+        "X"
+      );
     }
+  }
+
+  qtdeValida(): boolean {
+    let qtde = this.cadastroForm.controls["qtde"].value;
+    let valido = true;
+    if (
+      (qtde && typeof qtde == "number" && qtde >= 0 && qtde % 1 === 0) ||
+      qtde == null
+    ) {
+      valido = true;
+    } else {
+      valido = false;
+    }
+    return valido;
   }
 
   limpar(): void {
