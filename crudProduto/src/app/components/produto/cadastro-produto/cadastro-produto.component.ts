@@ -58,7 +58,7 @@ export class CadastroProdutoComponent implements OnInit {
     if (this.cadastroForm.valid) {
       if (!this.qtdeValida()) {
         this.openCustomSnackBar(
-          "Qtde inválida! Informe um número inteiro.",
+          "Qtde inválida! Informe um número inteiro e positivo.",
           "X"
         );
         return;
@@ -91,7 +91,10 @@ export class CadastroProdutoComponent implements OnInit {
   qtdeValida(): boolean {
     let qtde = this.cadastroForm.controls["qtde"].value;
     let valido = true;
-    if ((qtde && typeof qtde == "number" && qtde % 1 === 0) || qtde == null) {
+    if (
+      (qtde && typeof qtde == "number" && qtde >= 0 && qtde % 1 === 0) ||
+      qtde == null
+    ) {
       valido = true;
     } else {
       valido = false;
