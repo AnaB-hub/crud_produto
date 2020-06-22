@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, Input } from "@angular/core";
 import { ProdutoService } from "./../produto.service";
 import { MatSort, MatSnackBar, MatTableDataSource } from "@angular/material";
 import { Router } from "@angular/router";
@@ -14,6 +14,8 @@ export class ProdutosComponent implements OnInit {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
+  @Input() recebeFamilia;
+
   constructor(
     private produtoService: ProdutoService,
     private router: Router,
@@ -23,6 +25,7 @@ export class ProdutosComponent implements OnInit {
   async ngOnInit() {
     await this.carregarDados();
     this.dados.sort = this.sort;
+    console.log(this.recebeFamilia);
   }
 
   async carregarDados() {

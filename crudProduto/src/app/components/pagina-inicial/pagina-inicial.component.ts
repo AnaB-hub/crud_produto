@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-pagina-inicial',
-  templateUrl: './pagina-inicial.component.html',
-  styleUrls: ['./pagina-inicial.component.css']
+  selector: "app-pagina-inicial",
+  templateUrl: "./pagina-inicial.component.html",
+  styleUrls: ["./pagina-inicial.component.css"],
 })
 export class PaginaInicialComponent implements OnInit {
-
-  constructor() { }
-
+  // familia: Object[];
+  // constructor() {
+  //   this.familia = [
+  //     {
+  //       nome: "Vitor",
+  //       sobreNome: "Borges",
+  //     },
+  //     {
+  //       nome: "Emerson",
+  //       sobreNome: "Daniel",
+  //     },
+  //     {
+  //       nome: "Thiago",
+  //       sobreNome: "Contre!",
+  //     },
+  //   ];
+  // }
   ngOnInit() {
+    //   console.log("Familia", this.familia);
   }
-
 }
