@@ -20,5 +20,6 @@ mat-header-cell {
 }
 
 .semRegistro {
-  margin-left: 36px;
+  display: flex;
+  justify-content: center;
 }
