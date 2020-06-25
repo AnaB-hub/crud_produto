@@ -1,7 +1,7 @@
 <div class="body">
   <div class="mat-headline title">Listagem de Produtos</div>
 </div>
-<div class="mat-elevation-z8 table">
+<div class="mat-elevation-z8 table" *ngIf="dados">
   <mat-table [dataSource]="dados" matSort>
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nome </mat-header-cell>
@@ -25,4 +25,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+</div>
+<div *ngIf="!dados">
+  Não há produtos
 </div>
