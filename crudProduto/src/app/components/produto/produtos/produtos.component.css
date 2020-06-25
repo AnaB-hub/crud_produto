@@ -18,3 +18,8 @@ mat-header-cell {
   font-size: 18px;
   font-weight: bold;
 }
+
+.semRegistro {
+  display: flex;
+  justify-content: center;
+}

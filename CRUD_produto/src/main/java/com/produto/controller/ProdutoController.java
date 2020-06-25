@@ -75,8 +75,10 @@ public class ProdutoController {
 	@ApiOperation(value = "Exclusão lógica de produto")
 	public void logicalExclusionProduto(@PathVariable(value = "id") int id) {
 		Produto produto = produtoRepository.findById(id);
-		produto.setAtivos(false);
-		produtoRepository.save(produto);
+		if (produto != null) {
+			produto.setAtivos(false);
+			produtoRepository.save(produto);			
+		}
 	}
 	
 //	public void map() {
